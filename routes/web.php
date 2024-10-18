@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PokemonController;
+use App\Http\Controllers\PokedexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/pokemon', function () {
+
+    return view ('pokemon.index');
+
 });
+
+Auth::routes();
+
+Route::resource('pokemon', PokemonController::class);
+
+Route::get('/', [PokedexController::class,'index']);
